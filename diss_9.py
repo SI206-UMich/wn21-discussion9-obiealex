@@ -20,12 +20,13 @@ def getEggMoves(pokemon):
     url = 'https://pokemondb.net/pokedex/'+pokemon
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
-    tags = soup.find_all('h3')
-    for tag in tags:
-        if tag.text == "Egg moves":
-            table = tag.find_next_sibling('div', class_= 'resp-scroll')
+    tags = soup.find_all('table', class_= 'data-table')
+    egg = tags[2]
 
-    rows = table.find_all('a', class_= "ent-name")
+        # if tag.text == "Egg moves":
+        #     table = tag.find_next_sibling('div', class_= 'resp-scroll')
+
+    rows = egg.find_all('a', class_= "ent-name")
     for row in rows:
         lst.append(row.text)
 
