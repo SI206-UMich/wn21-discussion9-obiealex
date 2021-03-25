@@ -23,17 +23,10 @@ def getEggMoves(pokemon):
     tags = soup.find_all('table', class_= 'data-table')
     egg = tags[2]
 
-        # if tag.text == "Egg moves":
-        #     table = tag.find_next_sibling('div', class_= 'resp-scroll')
-
     rows = egg.find_all('a', class_= "ent-name")
     for row in rows:
         lst.append(row.text)
-
     return lst
-
-    #add code here
-
     
 
 # Task 3: Create a regex expression that will find all the times that have these formats: @2pm @5 pm @10am
